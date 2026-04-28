@@ -5,11 +5,6 @@ namespace Indexers
     public class MyCookieCollection
     {
         private static Dictionary<string, string> cookies = new Dictionary<string, string>();
-        private string _user;
-        public MyCookieCollection(string user)
-        {
-            _user = user;
-        }
 
         public string this[string name]
         {
@@ -27,14 +22,7 @@ namespace Indexers
             }
             set
             {
-                if (_user != "mai")
-                {
-                    Console.WriteLine("Access denied");
-                }
-                else
-                {
-                    cookies[name] = value;
-                }
+                cookies[name] = value;
             }
         }
     }
@@ -42,16 +30,10 @@ namespace Indexers
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please enter username");
-            string userinput = Console.ReadLine();
 
-            var cookieCollection = new MyCookieCollection(userinput);
-            cookieCollection["Username"] = userinput;
-
-            Console.WriteLine("Please enter theme");
-            userinput = Console.ReadLine();
-
-            cookieCollection["theme"] = userinput;
+            var cookieCollection = new MyCookieCollection();
+            cookieCollection["Username"] = "Mai";
+            cookieCollection["theme"] = "dark";
 
             Console.WriteLine($"Username: {cookieCollection["Username"]}");
             Console.WriteLine($"Theme: {cookieCollection["theme"]}");
